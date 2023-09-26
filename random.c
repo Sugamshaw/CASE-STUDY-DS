@@ -50,13 +50,16 @@ int main()
     while (true)
     {
 
-        printf("\t\t\t \033[1;32m1. LOGIN/SIGNIN\033[0m\n");
-        printf("\t\t\t \033[1;31m2. NEW USER RESIGTRATION\033[0m\n");
-        printf("\t\t\t \033[1;31m3. FORGOT PASSWORD\033[0m\n");
-        printf("\t\t\t \033[1;31m4. CHANGING PASSWORD\033[0m\n");
-        printf("\t\t\t \033[1;31m5. DELETION ACCOUNT\033[0m\n");
-        printf("\t\t\t \033[1;31m6. EXIT\033[0m\n");
-        printf("\t\t\t \033[1;31mENTER YOUR CHOICE: \033[0m\033[1;32m");
+        printf("\t\t\t \033[1;31m1. LOGIN/SIGNIN\033[0m\n");
+        printf("\t\t\t \033[1;32m2. NEW USER RESIGTRATION\033[0m\n");
+        printf("\t\t\t \033[1;33m3. FORGOT PASSWORD\033[0m\n");
+        printf("\t\t\t \033[1;34m4. CHANGING PASSWORD\033[0m\n");
+        printf("\t\t\t \033[1;35m5. DELETION ACCOUNT\033[0m\n");
+        printf("\t\t\t \033[1;36m6. EXIT\033[0m\n");
+        printf("\t\t\t \033[1;37mENTER YOUR CHOICE: \033[0m\033[1;32m\n");
+        printf("\t\t\t \033[1;38mENTER YOUR CHOICE: \033[0m\033[1;32m\n");
+        printf("\t\t\t \033[1;39mENTER YOUR CHOICE: \033[0m\033[1;32m\n");
+        printf("\t\t\t \033[1;40mENTER YOUR CHOICE: \033[0m\033[1;32m\n");
 
         scanf("%d", &choice);
         printf("\033[0m\n");
@@ -103,6 +106,13 @@ int main()
         case 3:
             break;
         case 4:
+            //green
+            printf("\t\t\t \033[1;32mEnter your name : \033[0m\033[1;33m");
+            printf("\033[0m");
+            //red
+            printf("\t\t\t \033[1;31mNo contacts found.\033[0m");
+            //blue
+            printf("\t\t\t \033[1;34mYour account is not found\033[0m\n");
             break;
         case 5:
             break;
