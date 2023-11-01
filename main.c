@@ -295,6 +295,7 @@ void newAccount()
             perror("\n\t\t\t \033[1;31mFailed to create file\033[0m");
             return;
         }
+        printf("\t\t\t \033[1;32mYour account has been successfully created!\033[0m\n\n");
         fclose(file);
     }
 }
@@ -328,7 +329,7 @@ void deleteAccount()
     printf("\n\t\t\t \033[1;32mEnter your name: \033[0m\033[1;33m");
     scanf(" %[^\n]", name);
     printf("\033[0m");
-    printf("\n\t\t\t \033[1;32mEnter your password: \033[0m\033[1;33m");
+    printf("\t\t\t \033[1;32mEnter your password: \033[0m\033[1;33m");
     scanf("%s", password);
     printf("\033[0m");
     loadAccountsCSV();
@@ -409,11 +410,11 @@ void forgetPassword()
             // csvfile
             if (rename(oldName, newName) == 0)
             {
-                printf("\t\t\t \033[1;34mFile renamed successfully.\033[0m\n");
+                printf("\t\t\t \033[1;34mNew password set successfully.\033[0m\n");
             }
             else
             {
-                perror("\t\t\t \033[1;31mError renaming file\033[0m\n");
+                perror("\t\t\t \033[1;31mNew password not created\033[0m\n");
             }
             return;
         }
@@ -438,7 +439,7 @@ void newcontact(char *name, char *password)
     struct ContactNode *curr = Contacthead;
     while (curr != NULL)
     {
-        if (strcmp(curr->name, contactname) == 0 && strcmp(curr->number, number) == 0)
+        if (strcmp(curr->name, contactname) == 0)
         {
             flag = 1;
         }
@@ -446,8 +447,13 @@ void newcontact(char *name, char *password)
     }
     if (flag == 0)
     {
+        printf("\t\t\t \033[1;34mNew contact has been added\033[0m\n");
         appendContactNode(&Contacthead, contactname, number);
         unloadContactCSV(filename);
+    }
+    else
+    {
+        printf("\t\t\t \033[1;31mNew contact cannot be added\033[0m\n");
     }
 }
 void deletecontact(char *name, char *password)
@@ -559,7 +565,7 @@ char *searchContact(char *name, char *password)
         {
             strcpy(contactNumber, curr->number);
             freeContactList();
-            printf("\t\t\t \033[1;34mThis is the contact number : %s\033[0m\n", contactNumber);
+            printf("\t\t\t \033[1;34mContact number : %s\033[0m\n", contactNumber);
             return contactNumber;
         }
         curr = curr->next;
@@ -583,7 +589,7 @@ void printContactList(char *name, char *password)
 void login(char *name, char *password)
 {
     printf("\t\t\t \033[1;31m------------------------------------------\033[0m\n");
-    printf("\t\t\t \033[1;31;43mWELCOME %s!\033[0m\n", name);
+    printf("\t\t\t\t \033[1;31;43mWELCOME %s!\033[0m\n", name);
 
     while (1)
     {
@@ -603,7 +609,6 @@ void login(char *name, char *password)
         {
         case 1:
             newcontact(name, password);
-            printf("\t\t\t \033[1;34mNew contact has been added\033[0m\n");
             break;
         case 2:
             deletecontact(name, password);
@@ -630,7 +635,7 @@ void login(char *name, char *password)
 int main()
 {
     printf("\t\t\t \033[1;31m------------------------------------------\t\t\t \033[0m\n");
-    printf("\t\t\t\033[1;31m|\033[0m \033[1;31;43mWELCOME TO OUR PHONE DIRECTORY\033[0m \033[1;31m|\033[0m\n");
+    printf("\t\t\t\033[1;31m|\033[0m     \033[1;31;43mWELCOME TO OUR PHONE DIRECTORY\033[0m \033[1;31m     |\033[0m\n");
     printf("\t\t\t \033[1;31m------------------------------------------\033[0m\n");
     while (1)
     {
@@ -649,7 +654,6 @@ int main()
         {
         case 1:
             newAccount();
-            printf("\t\t\t \033[1;32mYour account has been successfully created!\033[0m\n\n");
             break;
         case 2:
             loggingIn();
